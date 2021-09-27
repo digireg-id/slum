@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "pertanyaan3",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "OBJECTID": 150, "Shape_Leng": 4000.0, "Shape_Area": 1000000.0, "GRID_ID": "F-5", "prio": 3 }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ 106.789106952664923, -6.151372897940583 ], [ 106.789137213303675, -6.16041472791711 ], [ 106.780103030128771, -6.160444960485087 ], [ 106.780072922092813, -6.151403085805813 ], [ 106.789106952664923, -6.151372897940583 ] ] ] ] } }
+]
+}
