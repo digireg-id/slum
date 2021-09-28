@@ -339,24 +339,28 @@ function save() {
     var date = (dt.getDay() > 9 ? dt.getDay() : '0' + dt.getDay()) + '-' + (dt.getMonth() > 9 ? dt.getMonth() : '0' + dt.getMonth()) + '-' + dt.getFullYear() + ' ' + (dt.getHours() > 9 ? dt.getHours() : '0' + dt.getHours()) + ':' + (dt.getMinutes() > 9 ? dt.getMinutes() : '0' + dt.getMinutes()) + ':' + (dt.getSeconds() > 9 ? dt.getSeconds() : '0' + dt.getSeconds());
     var others = $('#others').val();
 
-    rows++;
+    if(m1 !== '' || m2 !== '') {
+       rows++;
 
-    setCookie('rows', rows);
-    setCookie('data-' + jns + '-' + rows, rows);
-    setCookie('obj1-' + jns + '-' + rows, m1);
-    setCookie('obj2-' + jns + '-' + rows, m2);
-    setCookie('obj3-' + jns + '-' + rows, date);
-    setCookie('obj4-' + jns + '-' + rows, JSON.stringify(shape_for_db));
-    setCookie('obj5-' + jns + '-' + rows, jns);
-    setCookie('obj6-' + jns + '-' + rows, others);
+       setCookie('rows', rows);
+       setCookie('data-' + jns + '-' + rows, rows);
+       setCookie('obj1-' + jns + '-' + rows, m1);
+       setCookie('obj2-' + jns + '-' + rows, m2);
+       setCookie('obj3-' + jns + '-' + rows, date);
+       setCookie('obj4-' + jns + '-' + rows, JSON.stringify(shape_for_db));
+       setCookie('obj5-' + jns + '-' + rows, jns);
+       setCookie('obj6-' + jns + '-' + rows, others);
 
-    get_data_submission();
-    reset();
+       get_data_submission();
+       reset();
 
-    map.addControl(drawControl);
-    reload_layer();
+       map.addControl(drawControl);
+       reload_layer();
 
-    get_checking_question();
+       get_checking_question();
+    } else {
+       Swal.fire("Warning", "Isi data yang masih kosong", "warning");
+    }
 }
 
 function update() {
