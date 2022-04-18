@@ -2,17 +2,18 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 define("timezone", date_default_timezone_set('Asia/Jakarta'));
 define("USERNAME_DB", "postgres");
-//define("PASSWD_DB", "postgres");
-define("PASSWD_DB", "Ui7AiUzsFm7k4JwRTDcF");
+define("PASSWD_DB", "postgres");
+//define("PASSWD_DB", "Ui7AiUzsFm7k4JwRTDcF");
 define("NAME_DB", "slumdb");
-define("TEMP_FILE_SHP", $_SERVER['DOCUMENT_ROOT']."/assets/shp/");
-//define("PATH_POSTGIS", "C:/Program Files/PostgreSQL/10/bin/");
-define("PATH_POSTGIS", "/usr/bin/");
-//define("PATH_SHP2PGSQL", "C:/Program Files/Postgresql/10/bin/shp2pgsql.exe");
-//define("PATH_PSQL", "C:/Program Files/PostgreSQL/10/bin/psql.exe");
-define("PATH_SHP2PGSQL", "/usr/bin/shp2pgsql");
-define("PATH_PSQL", "/usr/bin/psql");
-define("HOST", "partisipatori.geo-portal.id");
+define("TEMP_FILE_SHP", $_SERVER['DOCUMENT_ROOT']."/slum/assets/shp/");
+define("PATH_POSTGIS", "C:/Program Files/PostgreSQL/10/bin/");
+// define("PATH_POSTGIS", "/usr/bin/");
+define("PATH_SHP2PGSQL", "C:/Program Files/Postgresql/10/bin/shp2pgsql.exe");
+define("PATH_PSQL", "C:/Program Files/PostgreSQL/10/bin/psql.exe");
+// define("PATH_SHP2PGSQL", "/usr/bin/shp2pgsql");
+// define("PATH_PSQL", "/usr/bin/psql");
+define("HOST", "localhost");
+// define("HOST", "partisipatori.geo-portal.id");
 
 class MY_Controller extends CI_Controller {
     
@@ -305,7 +306,7 @@ class MY_Controller extends CI_Controller {
         $command = $this->get_command_postgis($full_path_filename, $query);
         $res = $command;
         
-	if($res){
+	    if($res){
             if(file_exists($full_path_filename.'.'.$ext_shp)){
                 $path = $path_temp_shp;
 

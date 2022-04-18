@@ -1,4 +1,4 @@
-var url = document.location.origin + '/';
+var url = document.location.origin + '/slum/';
 var path_map = 'assets/F8B90FEEA02867D4A/';
 var coords = [-6.261493, 106.810600];
 var geometry = '';

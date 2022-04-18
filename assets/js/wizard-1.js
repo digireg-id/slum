@@ -34,28 +34,31 @@ var KTWizard1 = function() {
                     var live_year = '';
                     var peran = '';
                     var pengalaman = '';
+                    var device = '';
 
-		    if (wizard.getStep() == 2) {
+                    if (wizard.getStep() == 2) {
                         $('#set_live').hide();
-			$('#btn_next').removeAttr('disabled');
+                        $('#btn_next').removeAttr('disabled');
 
                         live = getCookie('live');
                         live_year = getCookie('live_year');
                         peran = getCookie('peran');
                         pengalaman = getCookie('pengalaman');
+                        device = getCookie('device');
 
                         $('#live').val(live).change();
                         $('#peran').val(peran).change();
                         $('#pengalaman').val(pengalaman);
                         $('#live_year').val(live_year);
+                        $('#device').val(device);
 
                         if (live) {
                             $('#live_year').val(live_year);
-			    if(live === '1') {
-                            	$('#set_live').show();
-			    } else {
-				$('#set_live').hide();
-			    }
+                            if (live === '1') {
+                                $('#set_live').show();
+                            } else {
+                                $('#set_live').hide();
+                            }
                         }
 
                         $('#live').on('change', function() {
@@ -67,16 +70,18 @@ var KTWizard1 = function() {
                             }
                         });
                     } else if (wizard.getStep() == 3) {
-			$('#set_others').hide();
+                        $('#set_others').hide();
                         live = $('#live').val();
                         peran = $('#peran').val();
                         pengalaman = $('#pengalaman').val();
                         live_year = $('#live_year').val();
+                        device = $('#device').val();
 
                         setCookie('peran', peran);
                         setCookie('live', live);
                         setCookie('live_year', live_year);
                         setCookie('pengalaman', pengalaman);
+                        setCookie('device', device);
 
                         if (state == false) {
                             KTLeaflet.init('maps', 'jaksel');
@@ -84,11 +89,12 @@ var KTWizard1 = function() {
                             state = true;
                         }
 
-			get_checking_question();
+                        get_checking_question();
+                        instructions();
                     } else if (wizard.getStep() == 4) {
-			if(get_checking_question() == false) {
-			    wizard.goTo(3);
-			}
+                        if (get_checking_question() == false) {
+                            wizard.goTo(3);
+                        }
                         reset();
                         get_recap();
                         get_list_recap();
@@ -111,13 +117,13 @@ var KTWizard1 = function() {
 
         // Change event
         _wizard.on('change', function(wizard) {
-	    if(wizard.getStep() == 1) {
-		$('#btn_next').removeAttr('disabled');
-	    }
+            if (wizard.getStep() == 1) {
+                $('#btn_next').removeAttr('disabled');
+            }
 
-	    if(wizard.getStep() == 2) {
-		$('#btn_next').removeAttr('disabled');
-	    }
+            if (wizard.getStep() == 2) {
+                $('#btn_next').removeAttr('disabled');
+            }
 
             KTUtil.scrollTop();
         });
@@ -170,6 +176,13 @@ var KTWizard1 = function() {
                         }
                     },
                     live: {
+                        validators: {
+                            notEmpty: {
+                                message: 'This field is required'
+                            }
+                        }
+                    },
+                    device: {
                         validators: {
                             notEmpty: {
                                 message: 'This field is required'

@@ -42,7 +42,7 @@ var KTLeaflet = function(obj_parent, geojson_name) {
         var satelliteMap = L.tileLayer(satelliteURL, {
             maxZoom: max_zoom,
             attribution: satelliteAttrib,
-            subdomains:['mt0','mt1','mt2','mt3']
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
         });
 
         /*var onLocationFound = function(e) {
@@ -79,6 +79,12 @@ var KTLeaflet = function(obj_parent, geojson_name) {
             maxZoom: max_zoom
         });
 
+        // map.zoomControl.remove();
+        // L.control.zoom({zoomInText: '+ zoom in'}).addTo(map);
+        // $(".leaflet-control-zoom-in").css("width", "70px");
+        // $(".leaflet-control-zoom-in").css("font-size", "8pt");
+        // $(".leaflet-control-zoom-in").css("font-weight", "normal");
+
         satelliteMap.addTo(map);
 
         set_param_drawing();
@@ -102,7 +108,7 @@ var KTLeaflet = function(obj_parent, geojson_name) {
 
         L.easyButton('<span class="flaticon2-refresh"></span>', function() {
             reload_layer();
-        }).addTo(map);
+        }, 'Reload').addTo(map);
 
         /*L.easyButton('<span class="flaticon-placeholder-3"></span>', function() {
             map.on('locationfound', onLocationFound);
@@ -160,7 +166,7 @@ var KTLeaflet = function(obj_parent, geojson_name) {
                 $('#' + obj_parent).height($('#boks').height() - ($('#boks').height() / 2.3));
             }
             demo(obj_parent, name);
-	    $('#modal_instruction').modal('hide');
+            $('#modal_instruction').modal('hide');
         }
     };
 }();
@@ -339,27 +345,27 @@ function save() {
     var date = (dt.getDay() > 9 ? dt.getDay() : '0' + dt.getDay()) + '-' + (dt.getMonth() > 9 ? dt.getMonth() : '0' + dt.getMonth()) + '-' + dt.getFullYear() + ' ' + (dt.getHours() > 9 ? dt.getHours() : '0' + dt.getHours()) + ':' + (dt.getMinutes() > 9 ? dt.getMinutes() : '0' + dt.getMinutes()) + ':' + (dt.getSeconds() > 9 ? dt.getSeconds() : '0' + dt.getSeconds());
     var others = $('#others').val();
 
-    if(m1 !== '' || m2 !== '') {
-       rows++;
+    if (m1 !== '' && m2 !== '') {
+        rows++;
 
-       setCookie('rows', rows);
-       setCookie('data-' + jns + '-' + rows, rows);
-       setCookie('obj1-' + jns + '-' + rows, m1);
-       setCookie('obj2-' + jns + '-' + rows, m2);
-       setCookie('obj3-' + jns + '-' + rows, date);
-       setCookie('obj4-' + jns + '-' + rows, JSON.stringify(shape_for_db));
-       setCookie('obj5-' + jns + '-' + rows, jns);
-       setCookie('obj6-' + jns + '-' + rows, others);
+        setCookie('rows', rows);
+        setCookie('data-' + jns + '-' + rows, rows);
+        setCookie('obj1-' + jns + '-' + rows, m1);
+        setCookie('obj2-' + jns + '-' + rows, m2);
+        setCookie('obj3-' + jns + '-' + rows, date);
+        setCookie('obj4-' + jns + '-' + rows, JSON.stringify(shape_for_db));
+        setCookie('obj5-' + jns + '-' + rows, jns);
+        setCookie('obj6-' + jns + '-' + rows, others);
 
-       get_data_submission();
-       reset();
+        get_data_submission();
+        reset();
 
-       map.addControl(drawControl);
-       reload_layer();
+        map.addControl(drawControl);
+        reload_layer();
 
-       get_checking_question();
+        get_checking_question();
     } else {
-       Swal.fire("Warning", "Isi data yang masih kosong", "warning");
+        Swal.fire("Warning", "Isi data yang masih kosong <div><small>Please fill blank the columns</small></div>", "warning");
     }
 }
 
@@ -448,7 +454,7 @@ function delete_data(id) {
             Swal.fire("Deleted", "Data successfully deleted", "success");
             reload_layer();
 
-	    get_checking_question();
+            get_checking_question();
         }
     });
 }
@@ -649,6 +655,7 @@ function get_recap() {
     var peran = getCookie('peran');
     var pengalaman = getCookie('pengalaman');
     var live = getCookie('live');
+    var device = getCookie('device');
     var live_year = getCookie('live_year');
 
     if (peran === '1') {
@@ -674,6 +681,15 @@ function get_recap() {
         live = '';
     }
 
+    if (device === '1') {
+        device = 'PC/Laptop';
+    } else if (device === '2') {
+        device = 'Smartphone';
+    } else {
+        device = '';
+    }
+
+    $('#device_str').html(device);
     $('#live_str').html(live);
     $('#lama_str').html(live_year);
 }
@@ -687,6 +703,7 @@ function send() {
     var peran = getCookie('peran');
     var pengalaman = getCookie('pengalaman');
     var live = getCookie('live');
+    var device = getCookie('device');
     var live_year = getCookie('live_year');
     var sq1 = '';
     var sq2 = '';
@@ -711,14 +728,22 @@ function send() {
         live = 'Tidak';
     }
 
+    if (device == 1) {
+        device = 'PC/Laptop';
+    } else {
+        device = 'Smartphone';
+    }
+
     frm.append('q1', 'Pilih peran yang paling menggambarkan diri Anda');
     frm.append('q2', 'Pengalaman kerja (dalam tahun)');
     frm.append('q3', 'Apakah Anda bertempat tinggal di Jakarta?');
     frm.append('q4', 'Berapa tahun Anda tinggal di Jakarta?');
+    frm.append('q5', 'Device apa yang anda gunakan?');
 
     frm.append('peran', peran);
     frm.append('pengalaman', pengalaman);
     frm.append('live', live);
+    frm.append('device', device);
     frm.append('live_year', live_year);
 
     if (getAllCookies()) {
@@ -773,11 +798,11 @@ function readMore1() {
     var btnText = document.getElementById("myBtn1");
 
     if (moreText.style.display === "none") {
-       btnText.innerHTML = "Kurangi Bacaan (Read less)"; 
-       moreText.style.display = "inline";
+        btnText.innerHTML = "Kurangi Bacaan (Read less)";
+        moreText.style.display = "inline";
     } else {
-       btnText.innerHTML = "Baca Selengkapnya (Read more)"; 
-       moreText.style.display = "none";
+        btnText.innerHTML = "Baca Selengkapnya (Read more)";
+        moreText.style.display = "none";
     }
 }
 
@@ -786,11 +811,11 @@ function readMore2() {
     var btnText = document.getElementById("myBtn2");
 
     if (moreText.style.display === "none") {
-       btnText.innerHTML = "Kurangi Bacaan (Read less)"; 
-       moreText.style.display = "inline";
+        btnText.innerHTML = "Kurangi Bacaan (Read less)";
+        moreText.style.display = "inline";
     } else {
-       btnText.innerHTML = "Baca Selengkapnya (Read more)"; 
-       moreText.style.display = "none";
+        btnText.innerHTML = "Baca Selengkapnya (Read more)";
+        moreText.style.display = "none";
     }
 }
 
@@ -847,15 +872,51 @@ function reload_layer() {
     get_list_data_layer();
 }
 
-$('#chkapprove').on('click',function () {
-	var ckbox = $('#chkapprove');
-        if (ckbox.is(':checked')) {
-	    $('#btn_send_data').removeAttr("disabled");
-        } else {
-            $('#btn_send_data').attr("disabled", true);
-        }
+$('#chkapprove').on('click', function() {
+    var ckbox = $('#chkapprove');
+    if (ckbox.is(':checked')) {
+        $('#btn_send_data').removeAttr("disabled");
+    } else {
+        $('#btn_send_data').attr("disabled", true);
+    }
 });
 
 function instructions() {
     $('#modal_instruction').modal('show');
 }
+
+$(function() {
+    var xyz = 1;
+
+    $('.btnNext').click(function() {
+        if (xyz < 3) {
+            xyz++;
+        }
+
+        $('#tabwil a[href="#kt_tab_pane_' + xyz + '"]').tab('show');
+    });
+
+    $('.btnPrevious').click(function() {
+        if (xyz > 0) {
+            xyz--;
+        }
+
+        $('#tabwil a[href="#kt_tab_pane_' + xyz + '"]').tab('show');
+    });
+
+    $('.nav-tabs a').on('shown.bs.tab', function(event) {
+        var x = $(event.target).text();
+
+        if (x === 'Pertanyaan 1 (Question 1)') {
+            xyz = 1
+        }
+
+        if (x === 'Pertanyaan 2 (Question 2)') {
+            xyz = 2
+        }
+
+        if (x === 'Pertanyaan 3 (Question 3)') {
+            xyz = 3
+        }
+    });
+});

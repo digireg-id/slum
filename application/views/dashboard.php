@@ -7,8 +7,8 @@
                         <div class="wizard-label">
                             <i class="wizard-icon flaticon-book"></i>
                             <h3 class="wizard-title">
-                                1. Pembuka
-                                <div><small>1. Introduction</small></div>
+                                Pembuka
+                                <div><small>Introduction</small></div>
                             </h3>
                         </div>
                         <span class="svg-icon svg-icon-xl wizard-arrow">
@@ -25,8 +25,8 @@
                         <div class="wizard-label">
                             <i class="wizard-icon flaticon-users"></i>
                             <h3 class="wizard-title">
-                                2. Data Responden
-                                <div><small>2. Respondent Data</small></div>
+                                Data Responden
+                                <div><small>Respondent Data</small></div>
                             </h3>
                         </div>
                         <span class="svg-icon svg-icon-xl wizard-arrow">
@@ -43,8 +43,8 @@
                         <div class="wizard-label">
                             <i class="wizard-icon flaticon-map-location"></i>
                             <h3 class="wizard-title">
-                                3. Peta Wilayah
-                                <div><small>3. Map Area</small></div>
+                                Peta Wilayah
+                                <div><small>Map Area</small></div>
                             </h3>
                         </div>
                         <span class="svg-icon svg-icon-xl wizard-arrow">
@@ -61,8 +61,8 @@
                         <div class="wizard-label">
                             <i class="wizard-icon flaticon-paper-plane"></i>
                             <h3 class="wizard-title">
-                                4. Ringkasan & Kirim Data
-                                <div><small>4. Summary & Send Data</small></div>
+                                Ringkasan & Kirim Data
+                                <div><small>Summary & Send Data</small></div>
                             </h3>
                         </div>
                         <span class="svg-icon svg-icon-xl wizard-arrow last">
@@ -209,6 +209,21 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="form-group">
+                                        <label>
+                                            Device apa yang anda gunakan
+                                            <div><small>What device you use</small></div>
+                                        </label>
+                                        <select id="device" name="device" class="form-control selectpicker">
+                                            <option value="">-- Choose one --</option>
+                                            <option value="1">PC/Laptop</option>
+                                            <option value="2">Smartphone</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="pb-5" data-wizard-type="step-content">
                             <div class="row">
@@ -223,6 +238,10 @@
                                         <li class="nav-item">
                                             <a class="nav-link" data-toggle="tab" href="#kt_tab_pane_3">Pertanyaan 3 (Question 3)</a>
                                         </li>
+                                        <div style="padding-top:8px;right:10px;position:absolute">
+                                            <a class="btn btn-icon btn-xs btn-success btnPrevious"><i class="fa fa-arrow-left"></i></a>
+                                            <a class="btn btn-icon btn-xs btn-success btnNext"><i class="fa fa-arrow-right"></i></a>
+                                        </div>
                                     </ul>
                                     <div class="tab-content mt-5" id="myTabContent"></div>
                                     <div id="maps"></div>
@@ -292,6 +311,7 @@
                                 <div>Pengalaman kerja (Work experience): <b><span id="pengalaman_str"></span></b></div>
                                 <div>Tinggal di Jakarta (Do you live in Jakarta): <b><span id="live_str"></span></b></div>
                                 <div>Lama tinggal di Jakarta (How long you live in Jakarta): <b><span id="lama_str"></span></b></div>
+                                <div>Device apa yang anda gunakan (What device you use): <b><span id="device_str"></span></b></div>
                             </div>
                             <div class="separator separator-dashed my-5"></div>
                             <h6 class="font-weight-bolder mb-3">
@@ -299,14 +319,14 @@
                                 <div><small>Submission Details</small></div>
                             </h6>
                             <div id="list_data"></div>
-			    <div class="mt-15">
-				<div>
-				   <input type="checkbox" name="chkapprove" id="chkapprove" />
-				   <span></span>
-				   &nbsp;Dengan ini saya menyetujui bahwa data yang saya isi akan digunakan untuk kepentingan riset
-				</div>
-				<div><small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I hereby declare to share my answer for research purpose</small></div>
-			    </div>
+                            <div class="mt-15">
+                                <div>
+                                <input type="checkbox" name="chkapprove" id="chkapprove" />
+                                <span></span>
+                                &nbsp;Dengan ini saya menyetujui bahwa data yang saya isi akan digunakan untuk kepentingan riset
+                                </div>
+                                <div><small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I hereby declare to share my answer for research purpose</small></div>
+                            </div>
                         </div>
                         <div class="d-flex justify-content-between border-top mt-5 pt-10">
                             <div class="mr-2">
@@ -338,20 +358,20 @@
             </div>
             <div class="modal-body">
                 <h5>Instruksi:</h5>
-		<ol style="padding-left:12px">
-		   <li>Anda diminta mengisi seluruh pertanyaan (1 hingga 3) untuk dapat mengirim jawaban anda.</li>
-		   <li>Gambarlah area kumuh menurut persepsi anda pada peta, dengan menekan tombol segi lima</li>
-		   <li>Pastikan bahwa anda hanya menggambar di dalam kotak berwarna hijau</li>
-		   <li>Anda dapat menggambar lebih dari 1 polygon pada tiap pertanyaan, artinya setiap polygon dapat memiliki indikator kumuh serta tingkat pengenalan wilayah yang berbeda.</li>
-		</ol>
-		<hr>
-		<h5>Instructions:</h5>
-		<ol style="padding-left:12px">
-		   <li>You need to fill all the questions (1 to 3) to be able to submit your answer.</li>
-		   <li>Draw the area that you think is slum to the map by pressing the pentagonal shape button.</li>
-		   <li>Ensure that you only draw inside the green box in the map.</li>
-		   <li>You can draw more than 1 polygon for every questions, which means for each polygon you can indicates different slum indicators or your knowledge towards the area.</li>
-		</ol>
+                <ol style="padding-left:12px">
+                    <li>Anda diminta mengisi seluruh pertanyaan (1 hingga 3) untuk dapat mengirim jawaban anda.</li>
+                    <li>Gambarlah area kumuh menurut persepsi anda pada peta, dengan menekan tombol segi lima</li>
+                    <li>Pastikan bahwa anda hanya menggambar di dalam kotak berwarna hijau</li>
+                    <li>Anda dapat menggambar lebih dari 1 polygon pada tiap pertanyaan, artinya setiap polygon dapat memiliki indikator kumuh serta tingkat pengenalan wilayah yang berbeda.</li>
+                </ol>
+                <hr>
+                <h5>Instructions:</h5>
+                <ol style="padding-left:12px">
+                    <li>You need to fill all the questions (1 to 3) to be able to submit your answer.</li>
+                    <li>Draw the area that you think is slum to the map by pressing the pentagonal shape button.</li>
+                    <li>Ensure that you only draw inside the green box in the map.</li>
+                    <li>You can draw more than 1 polygon for every questions, which means for each polygon you can indicates different slum indicators or your knowledge towards the area.</li>
+                </ol>
             </div>
         </div>
     </div>

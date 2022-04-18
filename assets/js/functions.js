@@ -251,30 +251,30 @@ function get_checking_question() {
         }
 
         for (var i = 1; i <= rows; i++) {
-	    for (var x = 1; x <= 3; x++) { // 3 adalah jumlah banyaknya pertanyaan
+            for (var x = 1; x <= 3; x++) { // 3 adalah jumlah banyaknya pertanyaan
                 wil = getCookie('obj5-' + x + '-' + i);
-	        if(wil == 1) {
-		   status_check1 = 1;
-	        }
+                if (wil == 1) {
+                    status_check1 = 1;
+                }
 
-	        if(wil == 2) {
-		   status_check2 = 1;
-	        }
+                if (wil == 2) {
+                    status_check2 = 1;
+                }
 
-	        if(wil == 3) {
-		   status_check3 = 1;
-	        }
+                if (wil == 3) {
+                    status_check3 = 1;
+                }
             }
         }
 
-	if(status_check1 == 1 && status_check2 == 1 && status_check3 == 1) {
-	    $('#btn_next').removeAttr('disabled');
-	    ret = true;
-	} else {
-	    $('#btn_next').attr('disabled','disabled');
-	    ret = false;
+        if (status_check1 == 1 && status_check2 == 1 && status_check3 == 1) {
+            $('#btn_next').removeAttr('disabled');
+            ret = true;
+        } else {
+            $('#btn_next').attr('disabled', 'disabled');
+            ret = false;
         }
 
-	return ret;
+        return ret;
     }
 }

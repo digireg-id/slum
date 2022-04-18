@@ -30,7 +30,7 @@ class Recap_data extends MY_Controller {
                     'respondent' => $item->respondent,
                     'datetime' => $item->datetime,
                     'total_submission' => $item->total_submission,
-		    'actions' => $item->id_respondent
+		            'actions' => $item->id_respondent
                 );
     
                 array_push($data, $row);

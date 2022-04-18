@@ -27,11 +27,12 @@
     <link href="<?php echo base_url() ?>assets/deps/leaflet/dist/leaflet.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url() ?>assets/deps/leaflet-draw/dist/leaflet.draw.css" rel="stylesheet"
         type="text/css" />
-    <link href="<?php echo base_url() ?>assets/plugins/custom/leaflet/Control.FullScreen.css" rel="stylesheet" />
+    <!-- <link href="<?php echo base_url() ?>assets/plugins/custom/leaflet/Control.FullScreen.css" rel="stylesheet" /> -->
     <link type="text/css" href="<?php echo base_url() ?>assets/deps/leaflet-toolbar/dist/leaflet.toolbar.css"
         rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://justinmanley.github.io/leaflet-draw-toolbar/dist/leaflet.draw-toolbar.css" />
     <link href="<?php echo base_url() ?>assets/media/logos/favicon.ico" rel="shortcut icon" />
+    <link href='assets/css/leaflet.fullscreen.css' rel='stylesheet' />
 <style>
     .leaflet-layerstree-header-label {
         margin-bottom: 0px;

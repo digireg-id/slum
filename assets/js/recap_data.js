@@ -29,7 +29,7 @@ var KTRecapData = function() {
             columns: [{
                 field: 'num',
                 title: '#',
-                sortable: 'asc',
+                // sortable: 'asc',
                 width: 40,
                 type: 'number',
                 selector: false,

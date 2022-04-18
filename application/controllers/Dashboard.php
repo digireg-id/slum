@@ -69,11 +69,13 @@ class Dashboard extends MY_Controller {
 		$q2 = $this->input->post('q2');
 		$q3 = $this->input->post('q3');
 		$q4 = $this->input->post('q4');
+		$q5 = $this->input->post('q5');
 
 		$a1 = $this->input->post('peran');
 		$a2 = $this->input->post('pengalaman');
 		$a3 = $this->input->post('live');
 		$a4 = $this->input->post('live_year');
+		$a5 = $this->input->post('device');
 		$submission = $this->input->post('submission');
 
 		$set_data = array(
@@ -81,6 +83,7 @@ class Dashboard extends MY_Controller {
 			$q2 => $a2, 
 			$q3 => $a3, 
 			$q4 => $a4,
+			$q5 => $a5,
 			'submission' => $submission
 		);
 

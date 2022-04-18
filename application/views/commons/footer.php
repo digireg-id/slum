@@ -43,7 +43,7 @@
         <script src="<?php echo base_url() ?>assets/plugins/custom/leaflet/leaflet-search.js"> </script>
         <script src="<?php echo base_url() ?>assets/plugins/custom/leaflet/shp.min.js"> </script>
         <script src="<?php echo base_url() ?>assets/plugins/custom/leaflet/L.Control.Layers.Tree.js"></script>
-        <script src="<?php echo base_url() ?>assets/plugins/custom/leaflet/Control.FullScreen.js"></script>
+        <!-- <script src="<?php echo base_url() ?>assets/plugins/custom/leaflet/Control.FullScreen.js"></script> -->
 
 	<script src="https://unpkg.com/proj4@2.7.4/dist/proj4-src.js"></script>
 	<script src="https://unpkg.com/georaster@1.5.4/dist/georaster.browser.bundle.min.js"></script>
@@ -54,5 +54,6 @@
         <script src="<?php echo base_url() ?>assets/js/functions.js"></script>
         <script src="<?php echo base_url() ?>assets/js/maps.js"></script>
         <script src="<?php echo base_url() ?>assets/js/wizard-1.js"></script>
+        <script src='<?php echo base_url() ?>assets/js/Leaflet.fullscreen.min.js'></script>
    </body>
 </html>
